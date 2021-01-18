@@ -33,21 +33,17 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: GitHub Action for Yarn
-        # You may pin to the exact commit or the version.
-        # uses: Borales/actions-yarn@4965e1a0f0ae9c422a9a5748ebd1fb5e097d22b9
-        uses: borales/actions-yarn@v2.0.0
+        
+        uses: Borales/actions-yarn@v2.1.0
         with:
           cmd: install
         
-      - name: Build React App
-        run: |
-          npm install # Install Dependencies
-          CI=false npm run build # CI=false to ignore warnings
+      - name: Creating Build
+        run : yarn build
         
       - name: Install Surge
-        run : yarn global add surge
-      - name: Execute Surge
-        run: npx surge
+        run : npm install -g surge
+      
       - name : Deploy
         run: surge ./build http://bootcamp_my_app3.surge.sh/ --token ${{secrets.Surge_Token}}
           

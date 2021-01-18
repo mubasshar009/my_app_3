@@ -45,5 +45,5 @@ jobs:
       - name: Install Surge
         run : yarn global add surge
       - name : Deploy
-        run: surge bootcamp_react_app_2.surge.sh --token ${{secrets.Surge_Token}}
+        run: surge ./build bootcamp_react_app_2.surge.sh --token ${{secrets.Surge_Token}}
           

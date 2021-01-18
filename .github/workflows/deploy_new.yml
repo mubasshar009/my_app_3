@@ -40,12 +40,14 @@ jobs:
           cmd: install
         
       - name: Build React App
-        run: yarn build
+        run: |
+          npm install # Install Dependencies
+          CI=false npm run build # CI=false to ignore warnings
         
       - name: Install Surge
         run : yarn global add surge
       - name: Execute Surge
         run: npx surge
       - name : Deploy
-        run: surge ./build bootcamp_react_app_2.surge.sh --token ${{secrets.Surge_Token}}
+        run: surge ./build http://bootcamp_my_app3.surge.sh/ --token ${{secrets.Surge_Token}}
           
